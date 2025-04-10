@@ -2,13 +2,15 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { motion } from "framer-motion"
 
 export function MarketingHeader() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
 
   // Don't show header on authentication pages
@@ -24,94 +26,142 @@ export function MarketingHeader() {
     return null
   }
 
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Features", href: "/features" },
-    { name: "How It Works", href: "/how-it-works" },
-    // Removed About Us
-    // Removed Blog
-    { name: "Contact", href: "/contact" },
-  ]
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-sm">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold">
-              EverGrace.AI
+    <>
+      <header className="border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <motion.div
+            className="flex items-center"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href="/">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
+                alt="EverGrace.AI Logo"
+                width={160}
+                height={64}
+                priority
+                className="dark:invert"
+              />
             </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={`text-sm font-medium ${
-                  pathname === item.href
-                    ? "text-primary"
-                    : "text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden md:flex items-center space-x-4">
+          </motion.div>
+          <motion.nav
+            className="hidden md:flex items-center space-x-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <Link
+              href="/features"
+              className={`text-foreground hover:text-primary transition-colors ${pathname === "/features" ? "font-semibold" : ""}`}
+            >
+              Features
+            </Link>
+            <Link
+              href="/how-it-works"
+              className={`text-foreground hover:text-primary transition-colors ${pathname === "/how-it-works" ? "font-semibold" : ""}`}
+            >
+              How It Works
+            </Link>
+            <Link
+              href="/pricing"
+              className={`text-foreground hover:text-primary transition-colors ${pathname === "/pricing" ? "font-semibold" : ""}`}
+            >
+              Pricing
+            </Link>
             <ThemeToggle />
-            <Link href="/login">
-              <Button variant="outline" size="sm">
-                Log In
-              </Button>
+            <Link href="https://app.evergrace.ai/login">
+              <Button variant="outline">Sign In</Button>
             </Link>
-            <Link href="/signup">
-              <Button size="sm">Sign Up</Button>
+            <Link href="https://app.evergrace.ai/signup">
+              <Button>Get Started</Button>
             </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden space-x-4">
+          </motion.nav>
+          <motion.div
+            className="flex items-center space-x-2 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             <ThemeToggle />
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-600 dark:text-gray-300">
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </motion.div>
         </div>
+      </header>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
-            <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`text-sm font-medium ${
-                    pathname === item.href ? "text-primary" : "text-gray-600 dark:text-gray-300"
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="flex flex-col space-y-2 pt-4">
-                <Link href="/login" onClick={() => setIsMenuOpen(false)}>
-                  <Button variant="outline" className="w-full">
-                    Log In
-                  </Button>
-                </Link>
-                <Link href="/signup" onClick={() => setIsMenuOpen(false)}>
-                  <Button className="w-full">Sign Up</Button>
-                </Link>
-              </div>
-            </nav>
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          className="md:hidden fixed inset-0 z-40 bg-background"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="flex flex-col p-8 space-y-4">
+            <div className="flex justify-between items-center mb-6">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
+                alt="EverGrace.AI Logo"
+                width={120}
+                height={48}
+                priority
+                className="dark:invert"
+              />
+              <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+            <Link
+              href="/features"
+              className={`text-foreground hover:text-primary transition-colors py-3 border-b border-border ${pathname === "/features" ? "font-semibold" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Features
+            </Link>
+            <Link
+              href="/how-it-works"
+              className={`text-foreground hover:text-primary transition-colors py-3 border-b border-border ${pathname === "/how-it-works" ? "font-semibold" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              How It Works
+            </Link>
+            <Link
+              href="/pricing"
+              className={`text-foreground hover:text-primary transition-colors py-3 border-b border-border ${pathname === "/pricing" ? "font-semibold" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/contact"
+              className={`text-foreground hover:text-primary transition-colors py-3 border-b border-border ${pathname === "/contact" ? "font-semibold" : ""}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+            <div className="flex flex-col space-y-4 mt-4">
+              <Link href="https://app.evergrace.ai/login" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="outline" className="w-full">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="https://app.evergrace.ai/signup" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full">Get Started</Button>
+              </Link>
+            </div>
           </div>
-        )}
-      </div>
-    </header>
+        </motion.div>
+      )}
+    </>
   )
 }
-

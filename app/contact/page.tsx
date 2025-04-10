@@ -4,10 +4,10 @@ import { useScrollTop } from "@/hooks/use-scroll-top"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { motion } from "framer-motion"
 import { fadeIn, staggerContainer } from "@/lib/animations"
-import { MessageSquare, Mail, Phone, MapPin } from "lucide-react"
+import { MarketingHeader } from "@/components/marketing-header"
+import { Mail, Phone, MapPin } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
@@ -53,61 +53,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <motion.div
-            className="flex items-center"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link href="/">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-                alt="EverGrace.AI Logo"
-                width={160}
-                height={64}
-                priority
-                className="dark:invert"
-              />
-            </Link>
-          </motion.div>
-          <motion.nav
-            className="hidden md:flex items-center space-x-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <Link href="/" className="text-foreground hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link href="/features" className="text-foreground hover:text-primary transition-colors">
-              Features
-            </Link>
-            <Link href="/how-it-works" className="text-foreground hover:text-primary transition-colors">
-              How It Works
-            </Link>
-            <ThemeToggle />
-            <Link href="https://app.evergrace.ai/signin">
-              <Button variant="outline">Sign In</Button>
-            </Link>
-            <Link href="https://app.evergrace.ai/signup">
-              <Button>Get Started</Button>
-            </Link>
-          </motion.nav>
-          <motion.div
-            className="flex items-center space-x-2 md:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <ThemeToggle />
-            <Button variant="ghost" size="icon">
-              <MessageSquare className="h-6 w-6" />
-            </Button>
-          </motion.div>
-        </div>
-      </header>
+      <MarketingHeader />
 
       {/* Hero Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-muted/30 to-background">
@@ -380,7 +326,9 @@ export default function ContactPage() {
           </div>
         </div>
       </footer>
+      <Link href="https://app.evergrace.ai/login">
+        <Button variant="outline">Sign In</Button>
+      </Link>
     </div>
   )
 }
-

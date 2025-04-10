@@ -409,4 +409,3 @@ export function NewLocationModal({ isOpen, onClose, onCreateLocation }: NewLocat
     </Dialog>
   )
 }
-
