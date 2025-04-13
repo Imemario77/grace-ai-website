@@ -86,7 +86,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter className="pt-6">
                   <Button className="w-full" asChild>
-                    <Link href="https://app.evergrace.ai/">Get Started</Link>
+                    <Link href="/signup">Get Started</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -119,7 +119,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter className="pt-6">
                   <Button className="w-full" asChild>
-                    <Link href="https://app.evergrace.ai/">Get Started</Link>
+                    <Link href="/signup">Get Started</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -151,7 +151,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter className="pt-6">
                   <Button className="w-full" variant="default" asChild>
-                    <Link href="https://app.evergrace.ai/">Get Started</Link>
+                    <Link href="/signup">Get Started</Link>
                   </Button>
                 </CardFooter>
               </Card>

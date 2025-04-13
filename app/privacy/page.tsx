@@ -50,7 +50,7 @@ export default function PrivacyPolicyPage() {
               How It Works
             </Link>
             <ThemeToggle />
-            <Link href="https://app.evergrace.ai/signin">
+            <Link href="https://app.evergrace.ai/login">
               <Button variant="outline">Sign In</Button>
             </Link>
             <Link href="https://app.evergrace.ai/signup">
@@ -85,23 +85,22 @@ export default function PrivacyPolicyPage() {
           <div className="space-y-6 text-foreground">
             <section>
               <p>
-                Grace AI Solution, LLC. ("us", "we", or "our") operates the https://www.EverGrace.ai website (the
-                "Service"). This page informs you of our policies regarding the collection, use, and disclosure of
-                personal data when you use our Service and the choices you have associated with that data.
+                Choice Appointments LLC ("us", "we", or "our") operates the https://www.EverGrace.ai website (the
+                "Service"), which is the EverGrace product. This page informs you of our policies regarding the
+                collection, use, and disclosure of personal data when you use our Service and the choices you have
+                associated with that data.
               </p>
               <p className="mt-4">
-                We use your data to provide and improve the Service. By using the Service, you agree to the collection
-                and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy,
-                terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from
-                https://www.EverGrace.ai
+                By using the Service, you agree to the collection and use of information in accordance with this policy.
+                Unless otherwise defined herein, terms used in this Privacy Policy have the same meanings as in our
+                Terms and Conditions, accessible from https://www.EverGrace.ai
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Information Collection and Use</h2>
+              <h2 className="text-2xl font-semibold mb-4">1. Information Collection and Use</h2>
               <p>
-                We collect several different types of information for various purposes to provide and improve our
-                Service to you.
+                We collect various types of information for several purposes to provide and improve our Service for you.
               </p>
             </section>
 
@@ -160,8 +159,8 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Use of Data</h2>
-              <p>Grace AI Solution, LLC. uses the collected data for various purposes:</p>
+              <h2 className="text-2xl font-semibold mb-4">2. Use of Data</h2>
+              <p>Choice Appointments LLC uses the collected data for various purposes:</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>To provide and maintain the Service</li>
                 <li>To notify you about changes to our Service</li>
@@ -174,13 +173,51 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Transfer of Data</h2>
+              <h2 className="text-2xl font-semibold mb-4">3. Google Workspace API Integration and Data Handling</h2>
+              <h3 className="text-xl font-medium mt-6 mb-3">Google Workspace API Data</h3>
               <p>
-                Grace AI Solution WILL NOT share your data with any other integrated platforms or third parties,
-                including but not limited to case management systems, obituary publishing providers, answering services,
-                etc., or other systems required for day to day operation unless directed to do so by the funeral home.
+                When you connect your Google account, our application utilizes Google Workspace APIs. In this context:
               </p>
-              <p className="mt-4">
+              <ul className="list-disc pl-6 mt-2 space-y-1">
+                <li>
+                  <strong>Limited Data Storage:</strong> We store only a refresh token required for authentication and
+                  authorization. No additional user data obtained from Google Workspace APIs is retained.
+                </li>
+                <li>
+                  <strong>User-Controlled Data Access:</strong> Users can easily revoke their connection from the app
+                  settings, which effectively removes the association and any stored refresh token.
+                </li>
+                <li>
+                  <strong>No AI/ML Training with User Data:</strong> Our application does not retain user data acquired
+                  through Google Workspace APIs for the purpose of developing, improving, or training generalized AI and
+                  ML models. Instead, our AI functionality is powered by external Gemini LLM APIs. We do not use
+                  Workspace API data for training or fine-tuning any AI models.
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">4. Data Retention and Deletion</h2>
+              <p>We design our practices to prioritize both data utility and your privacy:</p>
+
+              <h3 className="text-xl font-medium mt-6 mb-3">Retention Practices:</h3>
+              <p>
+                The only information retained from the Google Workspace integration is the refresh token used for
+                maintaining session continuity. Once a user revokes their connection, access to the associated token is
+                terminated, and no further user data is stored from that integration.
+              </p>
+
+              <h3 className="text-xl font-medium mt-6 mb-3">Deletion Procedures:</h3>
+              <p>
+                You can disconnect your Google account at any time using our Service settings. Upon revocation, any
+                stored refresh token is promptly invalidated. Additionally, if you request deletion, we commit to
+                removing any data retained as part of this authentication process.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">5. Transfer of Data</h2>
+              <p>
                 Your information, including Personal Data, may be transferred to—and maintained on—computers located
                 outside of your state, province, country or other governmental jurisdiction where the data protection
                 laws may differ than those from your jurisdiction.
@@ -194,24 +231,23 @@ export default function PrivacyPolicyPage() {
                 agreement to that transfer.
               </p>
               <p className="mt-4">
-                Grace AI Solution, LLC. will take all steps reasonably necessary to ensure that your data is treated
+                Choice Appointments LLC will take all steps reasonably necessary to ensure that your data is treated
                 securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take
-                place to with this Privacy Policy and no transfer of your Personal Data will take place to an
-                organization or a country unless there are adequate controls in place including the security of your
-                data and other personal information.
+                place to an organization or a country unless there are adequate controls in place including the security
+                of your data and other personal information.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Disclosure of Data</h2>
+              <h2 className="text-2xl font-semibold mb-4">6. Disclosure of Data</h2>
               <h3 className="text-xl font-medium mt-6 mb-3">Legal Requirements</h3>
               <p>
-                Grace AI Solution, LLC. may disclose your Personal Data in the good faith belief that such action is
+                Choice Appointments LLC may disclose your Personal Data in the good faith belief that such action is
                 necessary to:
               </p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>To comply with a legal obligation</li>
-                <li>To protect and defend the rights or property of Grace AI Solution, LLC.</li>
+                <li>To protect and defend the rights or property of Choice Appointments LLC</li>
                 <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
                 <li>To protect the personal safety of users of the Service or the public</li>
                 <li>To protect against legal liability</li>
@@ -219,7 +255,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Security of Data</h2>
+              <h2 className="text-2xl font-semibold mb-4">7. Security of Data</h2>
               <p>
                 The security of your data is important to us, but remember that no method of transmission over the
                 Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable
@@ -228,7 +264,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Service Providers</h2>
+              <h2 className="text-2xl font-semibold mb-4">8. Service Providers</h2>
               <p>
                 We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to
                 provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how
@@ -241,7 +277,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Analytics</h2>
+              <h2 className="text-2xl font-semibold mb-4">9. Analytics</h2>
               <p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>
 
               <h3 className="text-xl font-medium mt-6 mb-3">Google Analytics</h3>
@@ -266,7 +302,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Links to Other Sites</h2>
+              <h2 className="text-2xl font-semibold mb-4">10. Links to Other Sites</h2>
               <p>
                 Our Service may contain links to other sites that are not operated by us. If you click on a third party
                 link, you will be directed to that third party's site. We strongly advise you to review the Privacy
@@ -279,7 +315,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Children's Privacy</h2>
+              <h2 className="text-2xl font-semibold mb-4">11. Children's Privacy</h2>
               <p>Our Service does not address anyone under the age of 18 ("Children").</p>
               <p className="mt-4">
                 We do not knowingly collect personally identifiable information from anyone under the age of 18. If you
@@ -290,7 +326,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Changes to this Privacy Policy</h2>
+              <h2 className="text-2xl font-semibold mb-4">12. Changes to this Privacy Policy</h2>
               <p>
                 We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new
                 Privacy Policy on this page.
@@ -306,7 +342,7 @@ export default function PrivacyPolicyPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Contact Us</h2>
+              <h2 className="text-2xl font-semibold mb-4">13. Contact Us</h2>
               <p>If you have any questions about this Privacy Policy, please contact us:</p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>
@@ -440,11 +476,10 @@ export default function PrivacyPolicyPage() {
             </div>
           </div>
           <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Grace AI Solution, LLC. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Choice Appointments LLC. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
   )
 }
-
