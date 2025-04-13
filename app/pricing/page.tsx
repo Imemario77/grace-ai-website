@@ -1,23 +1,33 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import { usePathname } from "next/navigation"
-import Link from "next/link"
-import { Check, Info } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { MarketingHeader } from "@/components/marketing-header"
-import { MarketingFooter } from "@/components/marketing-footer"
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { Check, Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { MarketingHeader } from "@/components/marketing-header";
+import { MarketingFooter } from "@/components/marketing-footer";
 
 export default function PricingPage() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -45,8 +55,12 @@ export default function PricingPage() {
               <Card className="md:col-span-4 bg-amber-50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800">
                 <CardContent className="pt-6">
                   <div className="text-center">
-                    <h3 className="text-xl font-bold">7 day Trial with all Packages</h3>
-                    <p className="text-muted-foreground mt-2">Try any plan risk-free for 7 days</p>
+                    <h3 className="text-xl font-bold">
+                      7 day Trial with all Packages
+                    </h3>
+                    <p className="text-muted-foreground mt-2">
+                      Try any plan risk-free for 7 days
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -55,10 +69,14 @@ export default function PricingPage() {
               <Card className="flex flex-col">
                 <CardHeader className="pb-0">
                   <div className="bg-amber-100 dark:bg-amber-900/20 -mx-6 -mt-6 p-4 rounded-t-lg">
-                    <div className="text-center font-bold text-lg mb-2">EverGrace Essentials</div>
+                    <div className="text-center font-bold text-lg mb-2">
+                      EverGrace Essentials
+                    </div>
                   </div>
                   <div className="mt-4 flex items-baseline text-gray-900 dark:text-gray-50">
-                    <span className="text-4xl font-extrabold tracking-tight">$25</span>
+                    <span className="text-4xl font-extrabold tracking-tight">
+                      $25
+                    </span>
                     <span className="ml-1 text-xl font-semibold">/month</span>
                   </div>
                 </CardHeader>
@@ -78,15 +96,24 @@ export default function PricingPage() {
                       text="Conversation transcripts"
                       tooltip="Grace provides transcript & summary conversation in portal"
                     />
-                    <FeatureItem text="Director notifications" tooltip="Grace notifies Director of inquiry" />
-                    <FeatureItem text="Appointment scheduling" tooltip="Grace schedules appointments with families" />
-                    <FeatureItem text="Inquiry analytics" tooltip="Grace provides inquiry analytics and reporting" />
+                    <FeatureItem
+                      text="Director notifications"
+                      tooltip="Grace notifies Director of inquiry"
+                    />
+                    <FeatureItem
+                      text="Appointment scheduling"
+                      tooltip="Grace schedules appointments with families"
+                    />
+                    <FeatureItem
+                      text="Inquiry analytics"
+                      tooltip="Grace provides inquiry analytics and reporting"
+                    />
                     <FeatureItem text="Email Support" />
                   </ul>
                 </CardContent>
                 <CardFooter className="pt-6">
                   <Button className="w-full" asChild>
-                    <Link href="/signup">Get Started</Link>
+                    <Link href="https://app.evergrace.ai/">Get Started</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -95,10 +122,14 @@ export default function PricingPage() {
               <Card className="flex flex-col">
                 <CardHeader className="pb-0">
                   <div className="bg-amber-100 dark:bg-amber-900/20 -mx-6 -mt-6 p-4 rounded-t-lg">
-                    <div className="text-center font-bold text-lg mb-2">EverGrace Connect</div>
+                    <div className="text-center font-bold text-lg mb-2">
+                      EverGrace Connect
+                    </div>
                   </div>
                   <div className="mt-4 flex items-baseline text-gray-900 dark:text-gray-50">
-                    <span className="text-4xl font-extrabold tracking-tight">$99</span>
+                    <span className="text-4xl font-extrabold tracking-tight">
+                      $99
+                    </span>
                     <span className="ml-1 text-xl font-semibold">/month</span>
                   </div>
                 </CardHeader>
@@ -119,7 +150,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter className="pt-6">
                   <Button className="w-full" asChild>
-                    <Link href="/signup">Get Started</Link>
+                    <Link href="https://app.evergrace.ai/">Get Started</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -127,14 +158,20 @@ export default function PricingPage() {
               {/* Professional Plan - EverGrace Eternal */}
               <Card className="flex flex-col border-primary relative">
                 <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4">
-                  <Badge className="bg-primary text-white px-3 py-1">Best Value</Badge>
+                  <Badge className="bg-primary text-white px-3 py-1">
+                    Best Value
+                  </Badge>
                 </div>
                 <CardHeader className="pb-0">
                   <div className="bg-amber-100 dark:bg-amber-900/20 -mx-6 -mt-6 p-4 rounded-t-lg">
-                    <div className="text-center font-bold text-lg mb-2">EverGrace Eternal</div>
+                    <div className="text-center font-bold text-lg mb-2">
+                      EverGrace Eternal
+                    </div>
                   </div>
                   <div className="mt-4 flex items-baseline text-gray-900 dark:text-gray-50">
-                    <span className="text-4xl font-extrabold tracking-tight">$250</span>
+                    <span className="text-4xl font-extrabold tracking-tight">
+                      $250
+                    </span>
                     <span className="ml-1 text-xl font-semibold">/month</span>
                   </div>
                 </CardHeader>
@@ -151,7 +188,7 @@ export default function PricingPage() {
                 </CardContent>
                 <CardFooter className="pt-6">
                   <Button className="w-full" variant="default" asChild>
-                    <Link href="/signup">Get Started</Link>
+                    <Link href="https://app.evergrace.ai/">Get Started</Link>
                   </Button>
                 </CardFooter>
               </Card>
@@ -160,7 +197,9 @@ export default function PricingPage() {
               <Card className="flex flex-col">
                 <CardHeader className="pb-0">
                   <div className="bg-amber-100 dark:bg-amber-900/20 -mx-6 -mt-6 p-4 rounded-t-lg">
-                    <div className="text-center font-bold text-lg mb-2">Enterprise</div>
+                    <div className="text-center font-bold text-lg mb-2">
+                      Enterprise
+                    </div>
                   </div>
                   <div className="mt-4 flex items-baseline text-gray-900 dark:text-gray-50">
                     <span className="text-2xl font-bold">Call us</span>
@@ -168,7 +207,8 @@ export default function PricingPage() {
                 </CardHeader>
                 <CardContent className="flex-1 pt-6">
                   <p className="text-muted-foreground mb-6">
-                    Custom solutions for large funeral home groups and enterprise clients with specific needs.
+                    Custom solutions for large funeral home groups and
+                    enterprise clients with specific needs.
                   </p>
                   <ul className="space-y-3">
                     <FeatureItem text="Everything from EverGrace Eternal" />
@@ -191,7 +231,7 @@ export default function PricingPage() {
 
       <MarketingFooter />
     </div>
-  )
+  );
 }
 
 // Reusable feature item component with consistent layout
@@ -217,5 +257,5 @@ function FeatureItem({ text, tooltip }: { text: string; tooltip?: string }) {
         )}
       </div>
     </li>
-  )
+  );
 }
