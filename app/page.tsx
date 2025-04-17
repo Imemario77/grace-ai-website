@@ -1,6 +1,7 @@
 "use client"
 
 import { useScrollTop } from "@/hooks/use-scroll-top"
+import { useScrollHeader } from "@/hooks/use-scroll-header"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -9,54 +10,74 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { motion } from "framer-motion"
 import { fadeIn, slideIn, staggerContainer } from "@/lib/animations"
 import { useState } from "react"
+import { LogoLink, Logo } from "@/components/logo"
 
 export default function LandingPage() {
   // This hook will scroll to top whenever this page is navigated to
   useScrollTop()
-
+  const isScrolled = useScrollHeader()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+      <header
+        className={`border-b border-border sticky top-0 z-50 bg-background/95 backdrop-blur-sm transition-all duration-300 ease-in-out ${
+          isScrolled ? "py-1" : "py-3"
+        }`}
+      >
+        <div className="container mx-auto px-4 flex justify-between items-center">
           <motion.div
             className="flex items-center"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-              alt="EverGrace.AI Logo"
-              width={160}
-              height={64}
-              priority
-              className="dark:invert"
+            <LogoLink
+              width={isScrolled ? 140 : 120}
+              height={isScrolled ? 40 : 48}
+              className="transition-all duration-300 ease-in-out"
+              compact={isScrolled}
             />
           </motion.div>
           <motion.nav
-            className="hidden md:flex items-center space-x-8"
+            className="hidden md:flex items-center space-x-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Link href="/features" className="text-foreground hover:text-primary transition-colors">
+            <Link
+              href="/features"
+              className={`text-foreground hover:text-primary transition-colors text-sm ${isScrolled ? "py-1" : "py-2"}`}
+            >
               Features
             </Link>
-            <Link href="/how-it-works" className="text-foreground hover:text-primary transition-colors">
+            <Link
+              href="/how-it-works"
+              className={`text-foreground hover:text-primary transition-colors text-sm ${isScrolled ? "py-1" : "py-2"}`}
+            >
               How It Works
             </Link>
-            <Link href="/pricing" className="text-foreground hover:text-primary transition-colors">
+            <Link
+              href="/pricing"
+              className={`text-foreground hover:text-primary transition-colors text-sm ${isScrolled ? "py-1" : "py-2"}`}
+            >
               Pricing
             </Link>
             <ThemeToggle />
             <Link href="https://app.evergrace.ai/login">
-              <Button variant="outline">Sign In</Button>
+              <Button
+                variant="outline"
+                size={isScrolled ? "sm" : "default"}
+                className="transition-all duration-300 ease-in-out"
+              >
+                Sign In
+              </Button>
             </Link>
             <Link href="https://app.evergrace.ai/signup">
-              <Button>Get Started</Button>
+              <Button size={isScrolled ? "sm" : "default"} className="transition-all duration-300 ease-in-out">
+                Get Started
+              </Button>
             </Link>
           </motion.nav>
           <motion.div
@@ -71,8 +92,13 @@ export default function LandingPage() {
               size="icon"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
+              className={isScrolled ? "h-8 w-8" : "h-10 w-10"}
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {mobileMenuOpen ? (
+                <X className={isScrolled ? "h-5 w-5" : "h-6 w-6"} />
+              ) : (
+                <Menu className={isScrolled ? "h-5 w-5" : "h-6 w-6"} />
+              )}
             </Button>
           </motion.div>
         </div>
@@ -87,14 +113,7 @@ export default function LandingPage() {
         >
           <div className="flex flex-col p-8 space-y-4">
             <div className="flex justify-between items-center mb-6">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-                alt="EverGrace.AI Logo"
-                width={120}
-                height={48}
-                priority
-                className="dark:invert"
-              />
+              <LogoLink width={100} height={40} />
               <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
                 <X className="h-6 w-6" />
               </Button>
@@ -480,13 +499,7 @@ export default function LandingPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-                alt="EverGrace.AI Logo"
-                width={160}
-                height={64}
-                className="mb-4 dark:invert"
-              />
+              <Logo width={160} height={64} className="mb-4" />
               <p className="text-muted-foreground mb-4">
                 Empowering funeral homes with AI voice assistance to provide compassionate, efficient service.
               </p>

@@ -2,12 +2,12 @@
 
 import { useScrollTop } from "@/hooks/use-scroll-top"
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { fadeIn, staggerContainer } from "@/lib/animations"
 import { MarketingHeader } from "@/components/marketing-header"
 import { MessageSquare, Phone, FileText, Calendar, CheckCircle } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 export default function HowItWorksPage() {
   // This hook will scroll to top whenever this page is navigated to
@@ -289,13 +289,7 @@ export default function HowItWorksPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-                alt="EverGrace.AI Logo"
-                width={160}
-                height={64}
-                className="mb-4 dark:invert"
-              />
+              <Logo width={160} height={64} className="mb-4" />
               <p className="text-muted-foreground mb-4">
                 Empowering funeral homes with AI voice assistance to provide compassionate, efficient service.
               </p>

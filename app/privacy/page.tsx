@@ -2,11 +2,11 @@
 
 import { useScrollTop } from "@/hooks/use-scroll-top"
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { motion } from "framer-motion"
 import { MessageSquare } from "lucide-react"
+import { LogoLink, Logo } from "@/components/logo"
 
 export default function PrivacyPolicyPage() {
   // This hook will scroll to top whenever this page is navigated to
@@ -16,23 +16,14 @@ export default function PrivacyPolicyPage() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="border-b border-border sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <motion.div
             className="flex items-center"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-                alt="EverGrace.AI Logo"
-                width={160}
-                height={64}
-                priority
-                className="dark:invert"
-              />
-            </Link>
+            <LogoLink width={120} height={48} />
           </motion.div>
           <motion.nav
             className="hidden md:flex items-center space-x-8"
@@ -368,13 +359,7 @@ export default function PrivacyPolicyPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-                alt="EverGrace.AI Logo"
-                width={160}
-                height={64}
-                className="mb-4 dark:invert"
-              />
+              <Logo width={160} height={64} className="mb-4" />
               <p className="text-muted-foreground mb-4">
                 Empowering funeral homes with AI voice assistance to provide compassionate, efficient service.
               </p>

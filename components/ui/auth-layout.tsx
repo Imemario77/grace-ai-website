@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 import type { ReactNode } from "react"
+import { Logo } from "@/components/logo"
 
 interface AuthLayoutProps {
   children: ReactNode
@@ -17,13 +17,7 @@ export function AuthLayout({ children, title, description, footer }: AuthLayoutP
         <div className="w-full max-w-md space-y-8">
           <div className="flex flex-col items-center space-y-2 mb-8">
             <Link href="/" className="mb-6">
-              <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Black%20logo%20-%20no%20background-oObeh6HaSfjlziwnlfa5ewGeCBEnGN.png"
-                alt="EverGrace.AI Logo"
-                width={200}
-                height={80}
-                priority
-              />
+              <Logo width={150} height={60} />
             </Link>
             <h1 className="text-3xl font-bold tracking-tight text-center">{title}</h1>
             <p className="text-muted-foreground text-center">{description}</p>
@@ -36,14 +30,7 @@ export function AuthLayout({ children, title, description, footer }: AuthLayoutP
       {/* Right side - Branding */}
       <div className="hidden lg:flex bg-secondary flex-col justify-center items-center p-12">
         <div className="max-w-md space-y-8 text-center">
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/White%20logo%20-%20no%20background-lEmyhiSCoRNGJ8GoX2i2YrIuEvAwci.png"
-            alt="EverGrace.AI Logo"
-            width={120}
-            height={120}
-            className="mx-auto mb-8"
-            priority
-          />
+          <Logo width={100} height={100} className="mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-white">Empowering Funeral Homes with AI Voice Assistance</h2>
           <p className="text-gray-300 text-lg">
             Grace AI helps funeral homes provide compassionate service through intelligent call handling, record
