@@ -26,6 +26,7 @@ export function Logo({ width = 160, height = 64, className = "", compact = false
     return <div style={{ width, height }} className={`flex items-center ${className}`} />
   }
 
+  // Update the logoSrc logic to ensure it's using the correct file paths
   // Use compact logos when compact prop is true
   const logoSrc = compact
     ? theme === "dark"
