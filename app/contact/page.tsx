@@ -1,54 +1,54 @@
-"use client"
+"use client";
 
-import { useScrollTop } from "@/hooks/use-scroll-top"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import { fadeIn, staggerContainer } from "@/lib/animations"
-import { MarketingHeader } from "@/components/marketing-header"
-import { Mail, Phone, MapPin } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { useState } from "react"
-import { Logo } from "@/components/logo"
+import { useScrollTop } from "@/hooks/use-scroll-top";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { fadeIn, staggerContainer } from "@/lib/animations";
+import { MarketingHeader } from "@/components/marketing-header";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { Logo } from "@/components/logo";
 
 export default function ContactPage() {
   // This hook will scroll to top whenever this page is navigated to
-  useScrollTop()
+  useScrollTop();
 
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     company: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormState((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
     setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
+      setIsSubmitting(false);
+      setIsSubmitted(true);
       setFormState({
         name: "",
         email: "",
         company: "",
         message: "",
-      })
-    }, 1500)
-  }
+      });
+    }, 1500);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -65,12 +65,18 @@ export default function ContactPage() {
             viewport={{ once: true }}
             variants={staggerContainer}
           >
-            <motion.h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6" variants={fadeIn}>
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold text-foreground mb-6"
+              variants={fadeIn}
+            >
               Get in Touch
             </motion.h1>
-            <motion.p className="text-xl text-muted-foreground max-w-3xl mx-auto" variants={fadeIn}>
-              Have questions about Grace AI? We're here to help. Reach out to our team and we'll get back to you as soon
-              as possible.
+            <motion.p
+              className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              variants={fadeIn}
+            >
+              Have questions about Grace AI? We're here to help. Reach out to
+              our team and we'll get back to you as soon as possible.
             </motion.p>
           </motion.div>
         </div>
@@ -91,21 +97,36 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
                 {isSubmitted ? (
                   <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-6 text-center">
-                    <h3 className="text-xl font-semibold text-green-700 dark:text-green-300 mb-2">Thank You!</h3>
+                    <h3 className="text-xl font-semibold text-green-700 dark:text-green-300 mb-2">
+                      Thank You!
+                    </h3>
                     <p className="text-green-600 dark:text-green-400">
-                      Your message has been received. We'll get back to you as soon as possible.
+                      Your message has been received. We'll get back to you as
+                      soon as possible.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="name"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Your Name
                       </label>
-                      <Input id="name" name="name" value={formState.name} onChange={handleChange} required />
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formState.name}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Email Address
                       </label>
                       <Input
@@ -118,13 +139,24 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label htmlFor="company" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="company"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Funeral Home Name
                       </label>
-                      <Input id="company" name="company" value={formState.company} onChange={handleChange} />
+                      <Input
+                        id="company"
+                        name="company"
+                        value={formState.company}
+                        onChange={handleChange}
+                      />
                     </div>
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Message
                       </label>
                       <Textarea
@@ -136,7 +168,11 @@ export default function ContactPage() {
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
@@ -155,8 +191,9 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
                 <p className="text-muted-foreground mb-8">
-                  Our team is available to answer your questions and provide more information about how Grace AI can
-                  help your funeral home.
+                  Our team is available to answer your questions and provide
+                  more information about how Grace AI can help your funeral
+                  home.
                 </p>
               </div>
 
@@ -167,7 +204,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <a href="mailto:hello@EverGrace.ai" className="text-primary hover:underline">
+                    <a
+                      href="mailto:hello@EverGrace.ai"
+                      className="text-primary hover:underline"
+                    >
                       hello@EverGrace.ai
                     </a>
                   </div>
@@ -179,8 +219,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Phone</h3>
-                    <a href="tel:4847348100" className="text-primary hover:underline">
-                      (484) 734-8100
+                    <a
+                      href="tel:4842635255"
+                      className="text-primary hover:underline"
+                    >
+                      (484) 263-5255
                     </a>
                   </div>
                 </div>
@@ -200,7 +243,8 @@ export default function ContactPage() {
               <div className="bg-muted/30 p-6 rounded-lg border border-border mt-8">
                 <h3 className="font-semibold mb-2">Schedule a Demo</h3>
                 <p className="text-muted-foreground mb-4">
-                  Want to see Grace AI in action? Schedule a personalized demo with our team.
+                  Want to see Grace AI in action? Schedule a personalized demo
+                  with our team.
                 </p>
                 <Button className="w-full">Book a Demo</Button>
               </div>
@@ -216,10 +260,14 @@ export default function ContactPage() {
             <div className="md:col-span-2">
               <Logo width={160} height={64} className="mb-4" />
               <p className="text-muted-foreground mb-4">
-                Empowering funeral homes with AI voice assistance to provide compassionate, efficient service.
+                Empowering funeral homes with AI voice assistance to provide
+                compassionate, efficient service.
               </p>
               <div className="flex space-x-4">
-                <Link href="#" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -235,7 +283,10 @@ export default function ContactPage() {
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                   </svg>
                 </Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -251,7 +302,10 @@ export default function ContactPage() {
                     <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                   </svg>
                 </Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -264,12 +318,22 @@ export default function ContactPage() {
                     strokeLinejoin="round"
                     className="h-6 w-6"
                   >
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <rect
+                      x="2"
+                      y="2"
+                      width="20"
+                      height="20"
+                      rx="5"
+                      ry="5"
+                    ></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
                 </Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary">
+                <Link
+                  href="#"
+                  className="text-muted-foreground hover:text-primary"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -293,7 +357,10 @@ export default function ContactPage() {
               <h3 className="font-semibold text-foreground mb-4">Company</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/contact" className="text-muted-foreground hover:text-primary">
+                  <Link
+                    href="/contact"
+                    className="text-muted-foreground hover:text-primary"
+                  >
                     Contact
                   </Link>
                 </li>
@@ -303,12 +370,18 @@ export default function ContactPage() {
               <h3 className="font-semibold text-foreground mb-4">Legal</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/terms" className="text-muted-foreground hover:text-primary">
+                  <Link
+                    href="/terms"
+                    className="text-muted-foreground hover:text-primary"
+                  >
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="text-muted-foreground hover:text-primary">
+                  <Link
+                    href="/privacy"
+                    className="text-muted-foreground hover:text-primary"
+                  >
                     Privacy Policy
                   </Link>
                 </li>
@@ -316,7 +389,10 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="border-t border-border mt-12 pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Grace AI Solution, LLC. All rights reserved.</p>
+            <p>
+              &copy; {new Date().getFullYear()} Grace AI Solution, LLC. All
+              rights reserved.
+            </p>
           </div>
         </div>
       </footer>
@@ -324,5 +400,5 @@ export default function ContactPage() {
         <Button variant="outline">Sign In</Button>
       </Link>
     </div>
-  )
+  );
 }
