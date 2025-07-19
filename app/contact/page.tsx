@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { Logo } from "@/components/logo";
+import { toast } from "sonner";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 export default function ContactPage() {
   // This hook will scroll to top whenever this page is navigated to
@@ -21,11 +23,12 @@ export default function ContactPage() {
     email: "",
     company: "",
     message: "",
+    to_number: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormState((prev) => ({
       ...prev,
@@ -33,21 +36,46 @@ export default function ContactPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const response = await fetch(
+        "https://graceai-backend-t0z7.onrender.com/api/v0/call/68711f78e2b83a22041d7f0a",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to_number: formState.to_number,
+            email: formState.email,
+            name: formState.name,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setFormState({
+          name: "",
+          email: "",
+          company: "",
+          message: "",
+          to_number: "",
+        });
+      } else {
+        // handle error, e.g. show a message
+        toast(data.data?.message || "Submission failed.");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({
-        name: "",
-        email: "",
-        company: "",
-        message: "",
-      });
-    }, 1500);
+    }
   };
 
   return (
@@ -138,7 +166,7 @@ export default function ContactPage() {
                         required
                       />
                     </div>
-                    <div>
+                    {/* <div>
                       <label
                         htmlFor="company"
                         className="block text-sm font-medium mb-2"
@@ -166,6 +194,28 @@ export default function ContactPage() {
                         value={formState.message}
                         onChange={handleChange}
                         required
+                      />
+                    </div> */}
+                    <div>
+                      <label
+                        htmlFor="to_number"
+                        className="block text-sm font-medium mb-2"
+                      >
+                        Phone Number
+                      </label>
+                      <PhoneInput
+                        id="to_number"
+                        placeholder="Enter a phone number"
+                        defaultCountry="US"
+                        name="to_number"
+                        required
+                        value={formState.to_number}
+                        onChange={(e) =>
+                          setFormState((prev) => ({
+                            ...prev,
+                            to_number: e,
+                          }))
+                        }
                       />
                     </div>
                     <Button
