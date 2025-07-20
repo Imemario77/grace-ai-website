@@ -270,10 +270,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold">Phone</h3>
                     <a
-                      href="tel:4842635255"
+                      href="tel:5074161173"
                       className="text-primary hover:underline"
                     >
-                      (484) 263-5255
+                      (507) 416-1173
                     </a>
                   </div>
                 </div>
@@ -296,7 +296,14 @@ export default function ContactPage() {
                   Want to see Grace AI in action? Schedule a personalized demo
                   with our team.
                 </p>
-                <Button className="w-full">Book a Demo</Button>
+                <Link
+                  href={
+                    "https://scheduler.zoom.us/aaron-swan/evergrace-24-7-call-center-consultation"
+                  }
+                  target="_blank"
+                >
+                  <Button className="w-full">Book a Demo</Button>
+                </Link>
               </div>
             </motion.div>
           </div>
